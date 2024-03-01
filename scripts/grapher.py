@@ -21,7 +21,7 @@ robots = 3
 
 
 # Set these to the experiment params
-experiment = '2nd_exp'
+experiment = '3rd_exp_decrease_at_600'
 title_extension = "- Decrease at 600(s)- Sim"
 
 
@@ -560,8 +560,8 @@ plt.xlabel('Time (s)')
 plt.ylabel('Activity Level')
 
 
-plt.savefig(f'{graph_path}/pngs/{experiment}{conditions[1]}_AL.png')
-plt.savefig(f'{graph_path}/pdfs/{experiment}{conditions[1]}_AL.pdf')
+plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[1]}_AL.png')
+plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[1]}_AL.pdf')
 plt.close()
 
 
@@ -579,7 +579,7 @@ y_limits = (0, 110)
 colours = dict(zip(subset['robot'].unique(), sns.color_palette(n_colors=len(subset['robot'].unique()))))
 
 lplot = sns.relplot(data=subset, x='time', y='activation', kind='line', hue='robot', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
-lplot.fig.suptitle('Activity Level {conditions[1]} {title_extension}', fontsize=16)
+lplot.fig.suptitle(f'Activity Level {conditions[1]} {title_extension}', fontsize=16)
 
 # Set y-axis limits
 plt.ylim(y_limits)
@@ -588,8 +588,8 @@ plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
 plt.xlabel('Time (s)')
 plt.ylabel('Activity Level')
 
-plt.savefig(f'{graph_path}/pngs/{experiment}{conditions[2]}_AL.png')
-plt.savefig(f'{graph_path}/pdfs/{experiment}{conditions[2]}_AL.pdf')
+plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[2]}_AL.png')
+plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[2]}_AL.pdf')
 plt.close()
 
 
@@ -615,8 +615,8 @@ plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
 plt.xlabel('Time (s)')
 plt.ylabel('Activity Level')
 
-plt.savefig(f'{graph_path}/pngs/{experiment}{conditions[3]}_AL.png')
-plt.savefig(f'{graph_path}/pdfs/{experiment}{conditions[3]}_AL.pdf')
+plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[3]}_AL.png')
+plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[3]}_AL.pdf')
 plt.close()
 
 
@@ -639,8 +639,8 @@ plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
 plt.xlabel('Time (s)')
 plt.ylabel('Activity Level')
 
-plt.savefig(f'{graph_path}/pngs/{experiment}TTH_ALL_AL.png')
-plt.savefig(f'{graph_path}/pdfs/{experiment}TTH_ALL._AL.pdf')
+plt.savefig(f'{graph_path}/pngs/{experiment}_TTH_ALL_AL.png')
+plt.savefig(f'{graph_path}/pdfs/{experiment}_TTH_ALL._AL.pdf')
 plt.close()
 
 
@@ -683,8 +683,8 @@ bplot.set_xlabel('Experiment Condition')
 bplot.set_ylabel('Final Tag Count')
 bplot.set_title(f'Final Tag Count {title_extension}')
 
-plt.savefig(f'{graph_path}/pngs/{experiment}final_tag_count.png')
-plt.savefig(f'{graph_path}/pdfs/{experiment}final_tag_count.pdf')
+plt.savefig(f'{graph_path}/pngs/{experiment}_final_tag_count.png')
+plt.savefig(f'{graph_path}/pdfs/{experiment}_final_tag_count.pdf')
 plt.close()
 
 
@@ -701,10 +701,10 @@ colours = dict(zip(subset['condition'].unique(), sns.color_palette(n_colors=len(
 lplot = sns.relplot(data=subset, x='time', y='cumul_tags', kind='line', hue='condition', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
 lplot.fig.suptitle(f'Tag Collection over Time {title_extension}', fontsize=16)
 
-bplot.set_xlabel('time(s)')
-bplot.set_ylabel('Tags Detected')
-bplot.set_title(f'Tags Detected over time {title_extension}')
+lplot.set_xlabel('time(s)')
+lplot.set_ylabel('Tags Detected')
+lplot.set_title(f'Tags Detected over time {title_extension}')
 
-plt.savefig(f'{graph_path}/pngs/{experiment}Tags_over_time.png')
-plt.savefig(f'{graph_path}/pdfs/{experiment}Tags_over_time.pdf')
+plt.savefig(f'{graph_path}/pngs/{experiment}_Tags_over_time.png')
+plt.savefig(f'{graph_path}/pdfs/{experiment}_Tags_over_time.pdf')
 plt.close()
