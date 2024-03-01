@@ -5,7 +5,8 @@ import numpy as np
 import seaborn as sns
 import pandas as pd
 import os
-
+import rospkg
+import rospy
 
 # Path to where the results are hosted online
 # This loads the data into a Pandas dataframe
@@ -24,10 +25,16 @@ robots = 3
 experiment = '3rd_exp_decrease_at_600'
 title_extension = "- Decrease at 600(s)- Sim"
 
+# rospy.init_node("grapher")
+
+os.system("roscore")
+
+rp = rospkg.RosPack()
+package_path = rp.get_path('logs_n_results')
 
 
 
-graph_path = f'src/logs_n_results/results/graphs/{experiment}'
+graph_path = f'{package_path}/results/graphs/{experiment}'
 
 
 if not os.path.exists(f"{graph_path}/pngs"):
@@ -44,7 +51,7 @@ for cond in conditions:
     for t in range(1, trials+1):
         data[cond][f"T{t}"] = {}
         for r in range(1, robots+1):
-            path = f'src/logs_n_results/logs/{experiment}/robot{r}/{cond}/trial_{t}/metrics/'
+            path = f'{package_path}/logs/{experiment}/robot{r}/{cond}/trial_{t}/metrics/'
             csv_files = os.listdir(path)
             csv_file = [f for f in csv_files if f.endswith('metricspog.csv')][0]
             df = pd.read_csv(os.path.join(path, csv_file), header=None)
@@ -668,6 +675,14 @@ tth_100_200_tags = subset_tth_100_200.groupby(['trial'])['cumul_tags'].max()
 subset_np = all_df[(all_df['time'] < max_time) & (all_df['condition'] == 'NP') & (all_df['cumul_tags'] < max_cumul_tags)]
 np_tags = subset_np.groupby(['trial'])['cumul_tags'].max()
 
+
+subset_tth_2_6 = all_df[(all_df['time'] < max_time) & 
+                        (all_df['condition'] == 'tth_2_6') &
+                        (all_df['cumul_tags'] < max_cumul_tags)]
+
+tth_2_6_tags = subset_tth_2_6.groupby(['trial'])['cumul_tags'].max()
+
+
 tags = { 'tth_2_6' : tth_2_6_tags,
         'tth_6_10' : tth_6_10_tags,
         'tth_100_200' : tth_100_200_tags,
@@ -701,9 +716,8 @@ colours = dict(zip(subset['condition'].unique(), sns.color_palette(n_colors=len(
 lplot = sns.relplot(data=subset, x='time', y='cumul_tags', kind='line', hue='condition', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
 lplot.fig.suptitle(f'Tag Collection over Time {title_extension}', fontsize=16)
 
-lplot.set_xlabel('time(s)')
-lplot.set_ylabel('Tags Detected')
-lplot.set_title(f'Tags Detected over time {title_extension}')
+plt.xlabel('Time (s)')
+plt.ylabel('Tags Detected')
 
 plt.savefig(f'{graph_path}/pngs/{experiment}_Tags_over_time.png')
 plt.savefig(f'{graph_path}/pdfs/{experiment}_Tags_over_time.pdf')
