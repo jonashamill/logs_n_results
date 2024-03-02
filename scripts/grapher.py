@@ -743,7 +743,7 @@ y_limits = (0, 110)
 colours = dict(zip(subset['robot'].unique(), sns.color_palette(n_colors=len(subset['robot'].unique()))))
 
 lplot = sns.relplot(data=subset, x='time', y='activation', kind='line', hue='robot', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
-lplot.fig.suptitle(f'Activity Level {conditions[3]} {title_extension}', fontsize=16)
+lplot.fig.suptitle(f'Activity Level {conditions[4]} {title_extension}', fontsize=16)
 
 # Set y-axis limits
 plt.ylim(y_limits)
