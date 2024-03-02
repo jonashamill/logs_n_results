@@ -16,14 +16,14 @@ import rospy
 min_time = 0
 max_time = 1200
 
-conditions = ['NP', 'TTH_2_6', 'TTH_6_10', 'TTH_100_200']
+conditions = ['NP', 'TTH_2_6', 'TTH_6_10', 'TTH_100_200', 'TTH_1_1']
 trials = 10
 robots = 3
 
 
 # Set these to the experiment params
-experiment = '3rd_exp_decrease_at_600'
-title_extension = "- Decrease at 600(s)- Sim"
+experiment = '4th_exp_1_tag_buffer_increase_at_600'
+title_extension = "- Decrease at 600(s), 1 tag buffer- Sim"
 
 # rospy.init_node("grapher")
 
@@ -497,6 +497,111 @@ NP_T10_R1.insert(2, 'robot', '1')
 NP_T10_R2.insert(2, 'robot', '2')
 NP_T10_R3.insert(2, 'robot', '3')
 
+
+# TTH 1 1
+TTH_1_1_T1_R2.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T1_R1.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T1_R3.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T1_R2.insert(1, 'trial', '1')
+TTH_1_1_T1_R1.insert(1, 'trial', '1')
+TTH_1_1_T1_R3.insert(1, 'trial', '1')
+TTH_1_1_T1_R1.insert(2, 'robot', '1')
+TTH_1_1_T1_R2.insert(2, 'robot', '2')
+TTH_1_1_T1_R3.insert(2, 'robot', '3')
+
+TTH_1_1_T2_R2.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T2_R1.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T2_R3.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T2_R2.insert(1, 'trial', '2')
+TTH_1_1_T2_R1.insert(1, 'trial', '2')
+TTH_1_1_T2_R3.insert(1, 'trial', '2')
+TTH_1_1_T2_R1.insert(2, 'robot', '1')
+TTH_1_1_T2_R2.insert(2, 'robot', '2')
+TTH_1_1_T2_R3.insert(2, 'robot', '3')
+
+TTH_1_1_T3_R2.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T3_R1.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T3_R3.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T3_R2.insert(1, 'trial', '3')
+TTH_1_1_T3_R1.insert(1, 'trial', '3')
+TTH_1_1_T3_R3.insert(1, 'trial', '3')
+TTH_1_1_T3_R1.insert(2, 'robot', '1')
+TTH_1_1_T3_R2.insert(2, 'robot', '2')
+TTH_1_1_T3_R3.insert(2, 'robot', '3')
+
+TTH_1_1_T4_R2.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T4_R1.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T4_R3.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T4_R2.insert(1, 'trial', '4')
+TTH_1_1_T4_R1.insert(1, 'trial', '4')
+TTH_1_1_T4_R3.insert(1, 'trial', '4')
+TTH_1_1_T4_R1.insert(2, 'robot', '1')
+TTH_1_1_T4_R2.insert(2, 'robot', '2')
+TTH_1_1_T4_R3.insert(2, 'robot', '3')
+
+# Fixing Trials 5 to 10 for condition 'tth_1_1'
+TTH_1_1_T5_R2.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T5_R1.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T5_R3.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T5_R2.insert(1, 'trial', '5')
+TTH_1_1_T5_R1.insert(1, 'trial', '5')
+TTH_1_1_T5_R3.insert(1, 'trial', '5')
+TTH_1_1_T5_R1.insert(2, 'robot', '1')
+TTH_1_1_T5_R2.insert(2, 'robot', '2')
+TTH_1_1_T5_R3.insert(2, 'robot', '3')
+
+TTH_1_1_T6_R2.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T6_R1.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T6_R3.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T6_R2.insert(1, 'trial', '6')
+TTH_1_1_T6_R1.insert(1, 'trial', '6')
+TTH_1_1_T6_R3.insert(1, 'trial', '6')
+TTH_1_1_T6_R1.insert(2, 'robot', '1')
+TTH_1_1_T6_R2.insert(2, 'robot', '2')
+TTH_1_1_T6_R3.insert(2, 'robot', '3')
+
+TTH_1_1_T7_R2.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T7_R1.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T7_R3.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T7_R2.insert(1, 'trial', '7')
+TTH_1_1_T7_R1.insert(1, 'trial', '7')
+TTH_1_1_T7_R3.insert(1, 'trial', '7')
+TTH_1_1_T7_R1.insert(2, 'robot', '1')
+TTH_1_1_T7_R2.insert(2, 'robot', '2')
+TTH_1_1_T7_R3.insert(2, 'robot', '3')
+
+TTH_1_1_T8_R2.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T8_R1.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T8_R3.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T8_R2.insert(1, 'trial', '8')
+TTH_1_1_T8_R1.insert(1, 'trial', '8')
+TTH_1_1_T8_R3.insert(1, 'trial', '8')
+TTH_1_1_T8_R1.insert(2, 'robot', '1')
+TTH_1_1_T8_R2.insert(2, 'robot', '2')
+TTH_1_1_T8_R3.insert(2, 'robot', '3')
+
+TTH_1_1_T9_R2.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T9_R1.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T9_R3.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T9_R2.insert(1, 'trial', '9')
+TTH_1_1_T9_R1.insert(1, 'trial', '9')
+TTH_1_1_T9_R3.insert(1, 'trial', '9')
+TTH_1_1_T9_R1.insert(2, 'robot', '1')
+TTH_1_1_T9_R2.insert(2, 'robot', '2')
+TTH_1_1_T9_R3.insert(2, 'robot', '3')
+
+TTH_1_1_T10_R2.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T10_R1.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T10_R3.insert(0, 'condition', 'tth_1_1')
+TTH_1_1_T10_R2.insert(1, 'trial', '10')
+TTH_1_1_T10_R1.insert(1, 'trial', '10')
+TTH_1_1_T10_R3.insert(1, 'trial', '10')
+TTH_1_1_T10_R1.insert(2, 'robot', '1')
+TTH_1_1_T10_R2.insert(2, 'robot', '2')
+TTH_1_1_T10_R3.insert(2, 'robot', '3')
+
+
+
 frames = []
 
 for cond in conditions:
@@ -626,6 +731,34 @@ plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[3]}_AL.png')
 plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[3]}_AL.pdf')
 plt.close()
 
+# Result 1 1
+
+subset = all_df[ ( all_df['condition'] == 'tth_1_1' ) ]
+#print( subset )
+
+# Set y-axis limits
+y_limits = (0, 110)
+
+# having trouble with hue colours
+colours = dict(zip(subset['robot'].unique(), sns.color_palette(n_colors=len(subset['robot'].unique()))))
+
+lplot = sns.relplot(data=subset, x='time', y='activation', kind='line', hue='robot', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
+lplot.fig.suptitle(f'Activity Level {conditions[3]} {title_extension}', fontsize=16)
+
+# Set y-axis limits
+plt.ylim(y_limits)
+plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
+
+
+plt.xlabel('Time (s)')
+plt.ylabel('Activity Level')
+
+plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[4]}_AL.png')
+plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[4]}_AL.pdf')
+plt.close()
+
+
+
 
 # Results all compared 
 subset = all_df[ ( all_df['time'] < max_time ) ]
@@ -672,20 +805,18 @@ tth_6_10_tags = subset_tth_6_10.groupby(['trial'])['cumul_tags'].max()
 subset_tth_100_200 = all_df[(all_df['time'] < max_time) & (all_df['condition'] == 'tth_100_200') & (all_df['cumul_tags'] < max_cumul_tags)]
 tth_100_200_tags = subset_tth_100_200.groupby(['trial'])['cumul_tags'].max()
 
+
+subset_tth_1_1 = all_df[(all_df['time'] < max_time) & (all_df['condition'] == 'tth_1_1') & (all_df['cumul_tags'] < max_cumul_tags)]
+tth_1_1_tags = subset_tth_1_1.groupby(['trial'])['cumul_tags'].max()
+
 subset_np = all_df[(all_df['time'] < max_time) & (all_df['condition'] == 'NP') & (all_df['cumul_tags'] < max_cumul_tags)]
 np_tags = subset_np.groupby(['trial'])['cumul_tags'].max()
-
-
-subset_tth_2_6 = all_df[(all_df['time'] < max_time) & 
-                        (all_df['condition'] == 'tth_2_6') &
-                        (all_df['cumul_tags'] < max_cumul_tags)]
-
-tth_2_6_tags = subset_tth_2_6.groupby(['trial'])['cumul_tags'].max()
 
 
 tags = { 'tth_2_6' : tth_2_6_tags,
         'tth_6_10' : tth_6_10_tags,
         'tth_100_200' : tth_100_200_tags,
+        'tth_1_1' : tth_1_1_tags,
          'np' : np_tags,
          }
 
