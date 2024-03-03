@@ -22,8 +22,8 @@ robots = 3
 
 
 # Set these to the experiment params
-experiment = '4th_exp_1_tag_buffer_increase_at_600'
-title_extension = "- Decrease at 600(s), 1 tag buffer- Sim"
+experiment = '5th_exp_1_tag_buffer_decrease_at_600'
+title_extension = "- Derease at 600(s), 1 tag buffer- Sim"
 
 # rospy.init_node("grapher")
 
@@ -672,8 +672,8 @@ plt.xlabel('Time (s)')
 plt.ylabel('Activity Level')
 
 
-plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[1]}_AL.png')
-plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[1]}_AL.pdf')
+plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[2]}_AL.png')
+plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[2]}_AL.pdf')
 plt.close()
 
 
@@ -700,8 +700,8 @@ plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
 plt.xlabel('Time (s)')
 plt.ylabel('Activity Level')
 
-plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[2]}_AL.png')
-plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[2]}_AL.pdf')
+plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[1]}_AL.png')
+plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[1]}_AL.pdf')
 plt.close()
 
 
@@ -791,7 +791,7 @@ plt.close()
 # total tags all conditions all trials
 
 # Define the maximum tag limit
-max_cumul_tags = 2000
+max_cumul_tags = 20000
 
 # Max tags added due to a seemingly anomalous reading of over 8000 for NP in one trial
 
