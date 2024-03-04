@@ -22,7 +22,7 @@ robots = 3
 
 
 # Set these to the experiment params
-experiment = '5th_exp_1_tag_buffer_decrease_at_600'
+experiment = '6th_exp_1_tag_buffer_decrease_at_600'
 title_extension = "- Derease at 600(s), 1 tag buffer- Sim"
 
 # rospy.init_node("grapher")
