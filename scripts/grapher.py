@@ -83,7 +83,9 @@ for cond in conditions:
 #       df.insert(2, 'robot', str(r))
 
 
-# Add columns to apply labels to data - for some reason this is the only one it doesn't like to put into a loop
+# Add columns to apply labels to data - for some reason this is the only part that doesn't like to be 
+# put into a loop
+      
 # TTH 2 6
 TTH_2_6_T1_R2.insert(0, 'condition', 'tth_2_6')
 TTH_2_6_T1_R1.insert(0, 'condition', 'tth_2_6')
