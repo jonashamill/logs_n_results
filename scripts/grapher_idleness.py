@@ -35,7 +35,7 @@ title_extension = "- New Behaviour + Paths - Sim"
 package_path = 'logs_n_results'
 
 
-graph_path = f'{package_path}/results/graphs/{experiment}'
+graph_path = f'{package_path}/results/graphs/{experiment}_idleness'
 
 
 if not os.path.exists(f"{graph_path}/pngs"):
@@ -52,16 +52,16 @@ for cond in conditions:
     for t in range(1, trials+1):
         data[cond][f"T{t}"] = {}
         for r in range(1, robots+1):
-            path = f'{package_path}/logs/{experiment}/robot{r}/{cond}/trial_{t}/metrics/'
+            path = f'{package_path}/logs/{experiment}/robot{r}/{cond}/trial_{t}/'
             csv_files = os.listdir(path)
-            csv_file = [f for f in csv_files if f.endswith('metricspog.csv')][0]
+            csv_file = [f for f in csv_files if f.endswith('poselog.csv')][0]
             df = pd.read_csv(os.path.join(path, csv_file), header=None)
             data[cond][f"T{t}"][f"R{r}"] = df
 
 
 
 
-columns = ['time', 'activation', 'state', 'marker', 'cumul_tags']
+columns = ['x', 'y', 'ox', 'oy', 'oz', 'ow', 'time']
 # Here we create variables for each trial/robot/condition
 for cond in conditions:
   for t in range(1, trials+1):
@@ -422,9 +422,11 @@ all_df['time'] = all_df['time'].round(0)
 # Make sure our numeric columns are not strings
 all_df["robot"] = pd.to_numeric(all_df["robot"])
 all_df["trial"] = pd.to_numeric(all_df["trial"])
-all_df["activation"] = pd.to_numeric(all_df["activation"])
-all_df["state"] = pd.to_numeric(all_df["state"])
-all_df["cumul_tags"] = pd.to_numeric(all_df["cumul_tags"])
+all_df["x"] = pd.to_numeric(all_df["x"])
+all_df["y"] = pd.to_numeric(all_df["y"])
+all_df["ox"] = pd.to_numeric(all_df["ox"])
+all_df["oy"] = pd.to_numeric(all_df["oy"])
+all_df["ow"] = pd.to_numeric(all_df["ow"])
 
 # It looks like you have some NaN's?
 # print( "Oops, number of NaN's: ", all_df.isnull().sum().sum() )
@@ -441,14 +443,30 @@ all_df = all_df[ ( all_df['time'] <= max_time ) ]
 # check formatting like this
 print( all_df )
 
+# Initialize a figure and axis object for plotting
+# Aggregate data
+aggregated_data = {}
+for cond in conditions:
+    frames = []
+    for t in range(1, trials+1):
+        for r in range(1, robots+1):
+            frames.append(data[cond][f"T{t}"][f"R{r}"])
+    aggregated_data[cond] = pd.concat(frames)
 
+# Create heatmaps
+for cond in conditions:
+    plt.figure(figsize=(10, 8))
+    sns.kdeplot(x=aggregated_data[cond]['x'], y=aggregated_data[cond]['y'], cmap="Reds", shade=True, bw_adjust=0.5)
+    plt.title(f"Heatmap of Robot Positions - Condition {cond}")
+    plt.xlabel('X Position')
+    plt.ylabel('Y Position')
+    plt.savefig(f'{graph_path}/pngs/{experiment}_{cond}_heatmap.png')
+    plt.savefig(f'{graph_path}/pdfs/{experiment}_{cond}_heatmap.pdf')
+    plt.close()
+# # Result P
 
-
-
-# # Results N+
-# subset = all_df[ ( all_df['condition'] == 'NP' ) ]
+# subset = all_df[ ( all_df['condition'] == 'P' ) ]
 # #print( subset )
-
 
 # # Set y-axis limits
 # y_limits = (0, 110)
@@ -456,158 +474,42 @@ print( all_df )
 # # having trouble with hue colours
 # colours = dict(zip(subset['robot'].unique(), sns.color_palette(n_colors=len(subset['robot'].unique()))))
 
-# lplot = sns.relplot(data=subset, x='time', y='activation', kind='line', hue='robot', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
-# lplot.fig.suptitle(f'Activity Level {conditions[1]} {title_extension}', fontsize=16)
+# lplot = sns.relplot(data=subset, x='x', y='y', kind='line', hue='robot', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
+# lplot.fig.suptitle(f'Neo Threshold {conditions[0]} {title_extension}', fontsize=16)
 
 # # Set y-axis limits
 # plt.ylim(y_limits)
 # plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
 
+
 # plt.xlabel('Time (s)')
-# plt.ylabel('Activity Level')
+# plt.ylabel('Neophilia')
 
-
-# plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[1]}_AL.png')
-# plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[1]}_AL.pdf')
+# plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[0]}_AL.png')
+# plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[0]}_AL.pdf')
 # plt.close()
 
 
 
-# # Results N-
-# subset = all_df[ ( all_df['condition'] == 'NM' ) ]
+
+# # Results all compared 
+# subset = all_df[ ( all_df['time'] < max_time ) ]
 # #print( subset )
 
 
-# # Set y-axis limits
-# y_limits = (0, 110)
 
 # # having trouble with hue colours
-# colours = dict(zip(subset['robot'].unique(), sns.color_palette(n_colors=len(subset['robot'].unique()))))
+# colours = dict(zip(subset['condition'].unique(), sns.color_palette(n_colors=len(subset['condition'].unique()))))
 
-# lplot = sns.relplot(data=subset, x='time', y='activation', kind='line', hue='robot', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
-# lplot.fig.suptitle(f'Activity Level {conditions[2]} {title_extension}', fontsize=16)
+# lplot = sns.relplot(data=subset, x='x', y='y', kind='line', hue='condition', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
+# lplot.fig.suptitle(f'Neo Threshold Over Time {title_extension}', fontsize=16)
 
-# # Set y-axis limits
-# plt.ylim(y_limits)
 # plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
 
+
 # plt.xlabel('Time (s)')
-# plt.ylabel('Activity Level')
+# plt.ylabel('Neophilia')
 
-# plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[2]}_AL.png')
-# plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[2]}_AL.pdf')
+# plt.savefig(f'{graph_path}/pngs/{experiment}_ALL_AL.png')
+# plt.savefig(f'{graph_path}/pdfs/{experiment}_ALL_AL.pdf')
 # plt.close()
-
-
-# Result P
-
-subset = all_df[ ( all_df['condition'] == 'P' ) ]
-#print( subset )
-
-# Set y-axis limits
-y_limits = (0, 110)
-
-# having trouble with hue colours
-colours = dict(zip(subset['robot'].unique(), sns.color_palette(n_colors=len(subset['robot'].unique()))))
-
-lplot = sns.relplot(data=subset, x='time', y='activation', kind='line', hue='robot', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
-lplot.fig.suptitle(f'Neo Threshold {conditions[0]} {title_extension}', fontsize=16)
-
-# Set y-axis limits
-plt.ylim(y_limits)
-plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
-
-
-plt.xlabel('Time (s)')
-plt.ylabel('Neophilia')
-
-plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[0]}_AL.png')
-plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[0]}_AL.pdf')
-plt.close()
-
-
-
-
-# Results all compared 
-subset = all_df[ ( all_df['time'] < max_time ) ]
-#print( subset )
-
-
-
-# having trouble with hue colours
-colours = dict(zip(subset['condition'].unique(), sns.color_palette(n_colors=len(subset['condition'].unique()))))
-
-lplot = sns.relplot(data=subset, x='time', y='activation', kind='line', hue='condition', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
-lplot.fig.suptitle(f'Neo Threshold Over Time {title_extension}', fontsize=16)
-
-plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
-
-
-plt.xlabel('Time (s)')
-plt.ylabel('Neophilia')
-
-plt.savefig(f'{graph_path}/pngs/{experiment}_ALL_AL.png')
-plt.savefig(f'{graph_path}/pdfs/{experiment}_ALL_AL.pdf')
-plt.close()
-
-
-
-
-
-
-# total tags all conditions all trials
-
-# Define the maximum tag limit
-max_cumul_tags = 200000
-
-# Max tags added due to a seemingly anomalous reading of over 8000 for NP in one trial
-
-# Filter data and compute final tag counts for each condition
-
-subset_p = all_df[(all_df['time'] < max_time) & (all_df['condition'] == 'P') & (all_df['cumul_tags'] < max_cumul_tags)]
-p_tags = subset_p.groupby(['trial'])['cumul_tags'].max()
-
-subset_np = all_df[(all_df['time'] < max_time) & (all_df['condition'] == 'NP') & (all_df['cumul_tags'] < max_cumul_tags)]
-np_tags = subset_np.groupby(['trial'])['cumul_tags'].max()
-
-subset_nm = all_df[(all_df['time'] < max_time) & (all_df['condition'] == 'NM') & (all_df['cumul_tags'] < max_cumul_tags)]
-nm_tags = subset_nm.groupby(['trial'])['cumul_tags'].max()
-
-tags = { 'P' : p_tags,
-         'N+' : np_tags,
-         'N-' : nm_tags,
-         }
-
-df = pd.DataFrame( tags )
-print(df)
-
-#colours = dict(zip(subset['robot'].unique(), sns.color_palette(n_colors=len(subset['robot'].unique()))))
-bplot = sns.boxplot( data=df, width=0.4)
-bplot.set_xlabel('Experiment Condition')
-bplot.set_ylabel('Final Tag Count')
-bplot.set_title(f'Final Tag Count {title_extension}')
-
-plt.savefig(f'{graph_path}/pngs/{experiment}_final_tag_count.png')
-plt.savefig(f'{graph_path}/pdfs/{experiment}_final_tag_count.pdf')
-plt.close()
-
-
-
-
-# Tags over time
-subset = all_df[ ( all_df['time'] < max_time ) ]
-
-
-
-# having trouble with hue colours
-colours = dict(zip(subset['condition'].unique(), sns.color_palette(n_colors=len(subset['condition'].unique()))))
-
-lplot = sns.relplot(data=subset, x='time', y='cumul_tags', kind='line', hue='condition', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
-lplot.fig.suptitle(f'Tag Collection over Time {title_extension}', fontsize=16)
-
-plt.xlabel('Time (s)')
-plt.ylabel('Tags Detected')
-
-plt.savefig(f'{graph_path}/pngs/{experiment}_Tags_over_time.png')
-plt.savefig(f'{graph_path}/pdfs/{experiment}_Tags_over_time.pdf')
-plt.close()
