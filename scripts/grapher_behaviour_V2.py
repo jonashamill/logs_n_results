@@ -22,8 +22,8 @@ robots = 3
 
 
 # Set these to the experiment params
-experiment = '8th_exp_new_paths'
-title_extension = "- New Behaviour + Paths - Sim"
+experiment = '9th_exp_7_again_bug_fixes'
+title_extension = "- New Behaviour - Sim"
 
 # rospy.init_node("grapher")
 
@@ -611,3 +611,34 @@ plt.ylabel('Tags Detected')
 plt.savefig(f'{graph_path}/pngs/{experiment}_Tags_over_time_600.png')
 plt.savefig(f'{graph_path}/pdfs/{experiment}_Tags_over_time_600.pdf')
 plt.close()
+
+# Assuming `all_df` contains a 'robot' column to identify each robot
+robots = all_df['robot'].unique()
+
+# Iterate over each robot to create individual graphs
+for robot in robots:
+    # Filter the data for each robot and compute the final tag counts
+    subset_p_robot = all_df[(all_df['time'] < max_time) & (all_df['condition'] == 'P') & (all_df['cumul_tags'] < max_cumul_tags) & (all_df['robot'] == robot)]
+    p_tags_robot = subset_p_robot.groupby(['trial'])['cumul_tags'].max()
+
+    subset_np_robot = all_df[(all_df['time'] < max_time) & (all_df['condition'] == 'NP') & (all_df['cumul_tags'] < max_cumul_tags) & (all_df['robot'] == robot)]
+    np_tags_robot = subset_np_robot.groupby(['trial'])['cumul_tags'].max()
+
+    subset_nm_robot = all_df[(all_df['time'] < max_time) & (all_df['condition'] == 'NM') & (all_df['cumul_tags'] < max_cumul_tags) & (all_df['robot'] == robot)]
+    nm_tags_robot = subset_nm_robot.groupby(['trial'])['cumul_tags'].max()
+
+    # Create a DataFrame for the robot's data
+    tags_robot = {'P': p_tags_robot, 'NP': np_tags_robot, 'NM': nm_tags_robot}
+    df_robot = pd.DataFrame(tags_robot)
+    
+    # Plot the data for the robot
+    plt.figure()
+    bplot_robot = sns.boxplot(data=df_robot, width=0.4)
+    bplot_robot.set_xlabel('Experiment Condition')
+    bplot_robot.set_ylabel(f'Final Tag Count for Robot {robot}')
+    bplot_robot.set_title(f'Final Tag Count for Robot {robot} {title_extension}')
+
+    # Save the plot for the robot
+    plt.savefig(f'{graph_path}/pngs/{experiment}_final_tag_count_robot_{robot}.png')
+    plt.savefig(f'{graph_path}/pdfs/{experiment}_final_tag_count_robot_{robot}.pdf')
+    plt.close()
