@@ -14,7 +14,7 @@ import os
 # robots, so these have to be loaded in individually
 
 min_time = 0
-max_time = 1200
+max_time = 600
 
 conditions = ['P', 'NP', 'NM']
 trials = 5
@@ -499,56 +499,56 @@ print( all_df )
 # plt.close()
 
 
-# Result P
+# # Result P
 
-subset = all_df[ ( all_df['condition'] == 'P' ) ]
-#print( subset )
+# subset = all_df[ ( all_df['condition'] == 'P' ) ]
+# #print( subset )
 
-# Set y-axis limits
-y_limits = (0, 110)
+# # Set y-axis limits
+# y_limits = (0, 110)
 
-# having trouble with hue colours
-colours = dict(zip(subset['robot'].unique(), sns.color_palette(n_colors=len(subset['robot'].unique()))))
+# # having trouble with hue colours
+# colours = dict(zip(subset['robot'].unique(), sns.color_palette(n_colors=len(subset['robot'].unique()))))
 
-lplot = sns.relplot(data=subset, x='time', y='activation', kind='line', hue='robot', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
-lplot.fig.suptitle(f'Neo Threshold {conditions[0]} {title_extension}', fontsize=16)
+# lplot = sns.relplot(data=subset, x='time', y='activation', kind='line', hue='robot', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
+# lplot.fig.suptitle(f'Neo Threshold {conditions[0]} {title_extension}', fontsize=16)
 
-# Set y-axis limits
-plt.ylim(y_limits)
-plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
-
-
-plt.xlabel('Time (s)')
-plt.ylabel('Neophilia')
-
-plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[0]}_AL.png')
-plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[0]}_AL.pdf')
-plt.close()
+# # Set y-axis limits
+# plt.ylim(y_limits)
+# plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
 
 
+# plt.xlabel('Time (s)')
+# plt.ylabel('Neophilia')
 
-
-# Results all compared 
-subset = all_df[ ( all_df['time'] < max_time ) ]
-#print( subset )
+# plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[0]}_AL.png')
+# plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[0]}_AL.pdf')
+# plt.close()
 
 
 
-# having trouble with hue colours
-colours = dict(zip(subset['condition'].unique(), sns.color_palette(n_colors=len(subset['condition'].unique()))))
 
-lplot = sns.relplot(data=subset, x='time', y='activation', kind='line', hue='condition', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
-lplot.fig.suptitle(f'Neo Threshold Over Time {title_extension}', fontsize=16)
-
-plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
+# # Results all compared 
+# subset = all_df[ ( all_df['time'] < max_time ) ]
+# #print( subset )
 
 
-plt.xlabel('Time (s)')
-plt.ylabel('Neophilia')
 
-plt.savefig(f'{graph_path}/pngs/{experiment}_ALL_AL.png')
-plt.savefig(f'{graph_path}/pdfs/{experiment}_ALL_AL.pdf')
-plt.close()
+# # having trouble with hue colours
+# colours = dict(zip(subset['condition'].unique(), sns.color_palette(n_colors=len(subset['condition'].unique()))))
+
+# lplot = sns.relplot(data=subset, x='time', y='activation', kind='line', hue='condition', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
+# lplot.fig.suptitle(f'Neo Threshold Over Time {title_extension}', fontsize=16)
+
+# plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
+
+
+# plt.xlabel('Time (s)')
+# plt.ylabel('Neophilia')
+
+# plt.savefig(f'{graph_path}/pngs/{experiment}_ALL_AL.png')
+# plt.savefig(f'{graph_path}/pdfs/{experiment}_ALL_AL.pdf')
+# plt.close()
 
 
 
@@ -587,8 +587,8 @@ bplot.set_xlabel('Experiment Condition')
 bplot.set_ylabel('Final Tag Count')
 bplot.set_title(f'Final Tag Count {title_extension}')
 
-plt.savefig(f'{graph_path}/pngs/{experiment}_final_tag_count.png')
-plt.savefig(f'{graph_path}/pdfs/{experiment}_final_tag_count.pdf')
+plt.savefig(f'{graph_path}/pngs/{experiment}_final_tag_count_600.png')
+plt.savefig(f'{graph_path}/pdfs/{experiment}_final_tag_count_600.pdf')
 plt.close()
 
 
@@ -608,6 +608,6 @@ lplot.fig.suptitle(f'Tag Collection over Time {title_extension}', fontsize=16)
 plt.xlabel('Time (s)')
 plt.ylabel('Tags Detected')
 
-plt.savefig(f'{graph_path}/pngs/{experiment}_Tags_over_time.png')
-plt.savefig(f'{graph_path}/pdfs/{experiment}_Tags_over_time.pdf')
+plt.savefig(f'{graph_path}/pngs/{experiment}_Tags_over_time_600.png')
+plt.savefig(f'{graph_path}/pdfs/{experiment}_Tags_over_time_600.pdf')
 plt.close()

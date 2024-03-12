@@ -22,7 +22,7 @@ robots = 3
 
 
 # Set these to the experiment params
-experiment = '8th_exp_new_paths'
+experiment = '7th_exp_new_behaviour'
 title_extension = "- New Behaviour + Paths - Sim"
 
 # rospy.init_node("grapher")
