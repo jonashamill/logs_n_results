@@ -14,16 +14,16 @@ import os
 # robots, so these have to be loaded in individually
 
 min_time = 0
-max_time = 600
+max_time = 2400
 
 conditions = ['P', 'NP', 'NM']
-trials = 5
+trials = 10
 robots = 3
 
 
 # Set these to the experiment params
-experiment = '9th_exp_7_again_bug_fixes'
-title_extension = "- New Behaviour - Sim"
+experiment = '10th_exp_changing_env'
+title_extension = "- Env Changing - Sim"
 
 # rospy.init_node("grapher")
 
@@ -32,7 +32,7 @@ title_extension = "- New Behaviour - Sim"
 # rp = rospkg.RosPack()
 # package_path = rp.get_path('logs_n_results')
 
-package_path = 'logs_n_results'
+package_path = 'src/logs_n_results'
 
 
 graph_path = f'{package_path}/results/graphs/{experiment}'
@@ -139,55 +139,56 @@ P_T5_R1.insert(2, 'robot', '1')
 P_T5_R2.insert(2, 'robot', '2')
 P_T5_R3.insert(2, 'robot', '3')
 
-# P_T6_R2.insert(0, 'condition', 'P')
-# P_T6_R1.insert(0, 'condition', 'P')
-# P_T6_R3.insert(0, 'condition', 'P')
-# P_T6_R2.insert(1, 'trial', '6')
-# P_T6_R1.insert(1, 'trial', '6')
-# P_T6_R3.insert(1, 'trial', '6')
-# P_T6_R1.insert(2, 'robot', '1')
-# P_T6_R2.insert(2, 'robot', '2')
-# P_T6_R3.insert(2, 'robot', '3')
+P_T6_R2.insert(0, 'condition', 'P')
+P_T6_R1.insert(0, 'condition', 'P')
+P_T6_R3.insert(0, 'condition', 'P')
+P_T6_R2.insert(1, 'trial', '6')
+P_T6_R1.insert(1, 'trial', '6')
+P_T6_R3.insert(1, 'trial', '6')
+P_T6_R1.insert(2, 'robot', '1')
+P_T6_R2.insert(2, 'robot', '2')
+P_T6_R3.insert(2, 'robot', '3')
 
-# P_T7_R2.insert(0, 'condition', 'P')
-# P_T7_R1.insert(0, 'condition', 'P')
-# P_T7_R3.insert(0, 'condition', 'P')
-# P_T7_R2.insert(1, 'trial', '7')
-# P_T7_R1.insert(1, 'trial', '7')
-# P_T7_R3.insert(1, 'trial', '7')
-# P_T7_R1.insert(2, 'robot', '1')
-# P_T7_R2.insert(2, 'robot', '2')
-# P_T7_R3.insert(2, 'robot', '3')
+P_T7_R2.insert(0, 'condition', 'P')
+P_T7_R1.insert(0, 'condition', 'P')
+P_T7_R3.insert(0, 'condition', 'P')
+P_T7_R2.insert(1, 'trial', '7')
+P_T7_R1.insert(1, 'trial', '7')
+P_T7_R3.insert(1, 'trial', '7')
+P_T7_R1.insert(2, 'robot', '1')
+P_T7_R2.insert(2, 'robot', '2')
+P_T7_R3.insert(2, 'robot', '3')
 
-# P_T8_R2.insert(0, 'condition', 'P')
-# P_T8_R1.insert(0, 'condition', 'P')
-# P_T8_R3.insert(0, 'condition', 'P')
-# P_T8_R2.insert(1, 'trial', '8')
-# P_T8_R1.insert(1, 'trial', '8')
-# P_T8_R3.insert(1, 'trial', '8')
-# P_T8_R1.insert(2, 'robot', '1')
-# P_T8_R2.insert(2, 'robot', '2')
-# P_T8_R3.insert(2, 'robot', '3')
+P_T8_R2.insert(0, 'condition', 'P')
+P_T8_R1.insert(0, 'condition', 'P')
+P_T8_R3.insert(0, 'condition', 'P')
+P_T8_R2.insert(1, 'trial', '8')
+P_T8_R1.insert(1, 'trial', '8')
+P_T8_R3.insert(1, 'trial', '8')
+P_T8_R1.insert(2, 'robot', '1')
+P_T8_R2.insert(2, 'robot', '2')
+P_T8_R3.insert(2, 'robot', '3')
 
-# P_T9_R2.insert(0, 'condition', 'P')
-# P_T9_R1.insert(0, 'condition', 'P')
-# P_T9_R3.insert(0, 'condition', 'P')
-# P_T9_R2.insert(1, 'trial', '9')
-# P_T9_R1.insert(1, 'trial', '9')
-# P_T9_R3.insert(1, 'trial', '9')
-# P_T9_R1.insert(2, 'robot', '1')
-# P_T9_R2.insert(2, 'robot', '2')
-# P_T9_R3.insert(2, 'robot', '3')
+P_T9_R2.insert(0, 'condition', 'P')
+P_T9_R1.insert(0, 'condition', 'P')
+P_T9_R3.insert(0, 'condition', 'P')
+P_T9_R2.insert(1, 'trial', '9')
+P_T9_R1.insert(1, 'trial', '9')
+P_T9_R3.insert(1, 'trial', '9')
+P_T9_R1.insert(2, 'robot', '1')
+P_T9_R2.insert(2, 'robot', '2')
+P_T9_R3.insert(2, 'robot', '3')
 
-# P_T10_R2.insert(0, 'condition', 'P')
-# P_T10_R1.insert(0, 'condition', 'P')
-# P_T10_R3.insert(0, 'condition', 'P')
-# P_T10_R2.insert(1, 'trial', '10')
-# P_T10_R1.insert(1, 'trial', '10')
-# P_T10_R3.insert(1, 'trial', '10')
-# P_T10_R1.insert(2, 'robot', '1')
-# P_T10_R2.insert(2, 'robot', '2')
-# P_T10_R3.insert(2, 'robot', '3')
+P_T10_R2.insert(0, 'condition', 'P')
+P_T10_R1.insert(0, 'condition', 'P')
+P_T10_R3.insert(0, 'condition', 'P')
+P_T10_R2.insert(1, 'trial', '10')
+P_T10_R1.insert(1, 'trial', '10')
+P_T10_R3.insert(1, 'trial', '10')
+P_T10_R1.insert(2, 'robot', '1')
+P_T10_R2.insert(2, 'robot', '2')
+P_T10_R3.insert(2, 'robot', '3')
+
 # NP
 NP_T1_R2.insert(0, 'condition', 'NP')
 NP_T1_R1.insert(0, 'condition', 'NP')
@@ -240,55 +241,55 @@ NP_T5_R1.insert(2, 'robot', '1')
 NP_T5_R2.insert(2, 'robot', '2')
 NP_T5_R3.insert(2, 'robot', '3')
 
-# NP_T6_R2.insert(0, 'condition', 'NP')
-# NP_T6_R1.insert(0, 'condition', 'NP')
-# NP_T6_R3.insert(0, 'condition', 'NP')
-# NP_T6_R2.insert(1, 'trial', '6')
-# NP_T6_R1.insert(1, 'trial', '6')
-# NP_T6_R3.insert(1, 'trial', '6')
-# NP_T6_R1.insert(2, 'robot', '1')
-# NP_T6_R2.insert(2, 'robot', '2')
-# NP_T6_R3.insert(2, 'robot', '3')
+NP_T6_R2.insert(0, 'condition', 'NP')
+NP_T6_R1.insert(0, 'condition', 'NP')
+NP_T6_R3.insert(0, 'condition', 'NP')
+NP_T6_R2.insert(1, 'trial', '6')
+NP_T6_R1.insert(1, 'trial', '6')
+NP_T6_R3.insert(1, 'trial', '6')
+NP_T6_R1.insert(2, 'robot', '1')
+NP_T6_R2.insert(2, 'robot', '2')
+NP_T6_R3.insert(2, 'robot', '3')
 
-# NP_T7_R2.insert(0, 'condition', 'NP')
-# NP_T7_R1.insert(0, 'condition', 'NP')
-# NP_T7_R3.insert(0, 'condition', 'NP')
-# NP_T7_R2.insert(1, 'trial', '7')
-# NP_T7_R1.insert(1, 'trial', '7')
-# NP_T7_R3.insert(1, 'trial', '7')
-# NP_T7_R1.insert(2, 'robot', '1')
-# NP_T7_R2.insert(2, 'robot', '2')
-# NP_T7_R3.insert(2, 'robot', '3')
+NP_T7_R2.insert(0, 'condition', 'NP')
+NP_T7_R1.insert(0, 'condition', 'NP')
+NP_T7_R3.insert(0, 'condition', 'NP')
+NP_T7_R2.insert(1, 'trial', '7')
+NP_T7_R1.insert(1, 'trial', '7')
+NP_T7_R3.insert(1, 'trial', '7')
+NP_T7_R1.insert(2, 'robot', '1')
+NP_T7_R2.insert(2, 'robot', '2')
+NP_T7_R3.insert(2, 'robot', '3')
 
-# NP_T8_R2.insert(0, 'condition', 'NP')
-# NP_T8_R1.insert(0, 'condition', 'NP')
-# NP_T8_R3.insert(0, 'condition', 'NP')
-# NP_T8_R2.insert(1, 'trial', '8')
-# NP_T8_R1.insert(1, 'trial', '8')
-# NP_T8_R3.insert(1, 'trial', '8')
-# NP_T8_R1.insert(2, 'robot', '1')
-# NP_T8_R2.insert(2, 'robot', '2')
-# NP_T8_R3.insert(2, 'robot', '3')
+NP_T8_R2.insert(0, 'condition', 'NP')
+NP_T8_R1.insert(0, 'condition', 'NP')
+NP_T8_R3.insert(0, 'condition', 'NP')
+NP_T8_R2.insert(1, 'trial', '8')
+NP_T8_R1.insert(1, 'trial', '8')
+NP_T8_R3.insert(1, 'trial', '8')
+NP_T8_R1.insert(2, 'robot', '1')
+NP_T8_R2.insert(2, 'robot', '2')
+NP_T8_R3.insert(2, 'robot', '3')
 
-# NP_T9_R2.insert(0, 'condition', 'NP')
-# NP_T9_R1.insert(0, 'condition', 'NP')
-# NP_T9_R3.insert(0, 'condition', 'NP')
-# NP_T9_R2.insert(1, 'trial', '9')
-# NP_T9_R1.insert(1, 'trial', '9')
-# NP_T9_R3.insert(1, 'trial', '9')
-# NP_T9_R1.insert(2, 'robot', '1')
-# NP_T9_R2.insert(2, 'robot', '2')
-# NP_T9_R3.insert(2, 'robot', '3')
+NP_T9_R2.insert(0, 'condition', 'NP')
+NP_T9_R1.insert(0, 'condition', 'NP')
+NP_T9_R3.insert(0, 'condition', 'NP')
+NP_T9_R2.insert(1, 'trial', '9')
+NP_T9_R1.insert(1, 'trial', '9')
+NP_T9_R3.insert(1, 'trial', '9')
+NP_T9_R1.insert(2, 'robot', '1')
+NP_T9_R2.insert(2, 'robot', '2')
+NP_T9_R3.insert(2, 'robot', '3')
 
-# NP_T10_R2.insert(0, 'condition', 'NP')
-# NP_T10_R1.insert(0, 'condition', 'NP')
-# NP_T10_R3.insert(0, 'condition', 'NP')
-# NP_T10_R2.insert(1, 'trial', '10')
-# NP_T10_R1.insert(1, 'trial', '10')
-# NP_T10_R3.insert(1, 'trial', '10')
-# NP_T10_R1.insert(2, 'robot', '1')
-# NP_T10_R2.insert(2, 'robot', '2')
-# NP_T10_R3.insert(2, 'robot', '3')
+NP_T10_R2.insert(0, 'condition', 'NP')
+NP_T10_R1.insert(0, 'condition', 'NP')
+NP_T10_R3.insert(0, 'condition', 'NP')
+NP_T10_R2.insert(1, 'trial', '10')
+NP_T10_R1.insert(1, 'trial', '10')
+NP_T10_R3.insert(1, 'trial', '10')
+NP_T10_R1.insert(2, 'robot', '1')
+NP_T10_R2.insert(2, 'robot', '2')
+NP_T10_R3.insert(2, 'robot', '3')
 
 # NM
 NM_T1_R2.insert(0, 'condition', 'NM')
@@ -342,55 +343,55 @@ NM_T5_R1.insert(2, 'robot', '1')
 NM_T5_R2.insert(2, 'robot', '2')
 NM_T5_R3.insert(2, 'robot', '3')
 
-# NM_T6_R2.insert(0, 'condition', 'NM')
-# NM_T6_R1.insert(0, 'condition', 'NM')
-# NM_T6_R3.insert(0, 'condition', 'NM')
-# NM_T6_R2.insert(1, 'trial', '6')
-# NM_T6_R1.insert(1, 'trial', '6')
-# NM_T6_R3.insert(1, 'trial', '6')
-# NM_T6_R1.insert(2, 'robot', '1')
-# NM_T6_R2.insert(2, 'robot', '2')
-# NM_T6_R3.insert(2, 'robot', '3')
+NM_T6_R2.insert(0, 'condition', 'NM')
+NM_T6_R1.insert(0, 'condition', 'NM')
+NM_T6_R3.insert(0, 'condition', 'NM')
+NM_T6_R2.insert(1, 'trial', '6')
+NM_T6_R1.insert(1, 'trial', '6')
+NM_T6_R3.insert(1, 'trial', '6')
+NM_T6_R1.insert(2, 'robot', '1')
+NM_T6_R2.insert(2, 'robot', '2')
+NM_T6_R3.insert(2, 'robot', '3')
 
-# NM_T7_R2.insert(0, 'condition', 'NM')
-# NM_T7_R1.insert(0, 'condition', 'NM')
-# NM_T7_R3.insert(0, 'condition', 'NM')
-# NM_T7_R2.insert(1, 'trial', '7')
-# NM_T7_R1.insert(1, 'trial', '7')
-# NM_T7_R3.insert(1, 'trial', '7')
-# NM_T7_R1.insert(2, 'robot', '1')
-# NM_T7_R2.insert(2, 'robot', '2')
-# NM_T7_R3.insert(2, 'robot', '3')
+NM_T7_R2.insert(0, 'condition', 'NM')
+NM_T7_R1.insert(0, 'condition', 'NM')
+NM_T7_R3.insert(0, 'condition', 'NM')
+NM_T7_R2.insert(1, 'trial', '7')
+NM_T7_R1.insert(1, 'trial', '7')
+NM_T7_R3.insert(1, 'trial', '7')
+NM_T7_R1.insert(2, 'robot', '1')
+NM_T7_R2.insert(2, 'robot', '2')
+NM_T7_R3.insert(2, 'robot', '3')
 
-# NM_T8_R2.insert(0, 'condition', 'NM')
-# NM_T8_R1.insert(0, 'condition', 'NM')
-# NM_T8_R3.insert(0, 'condition', 'NM')
-# NM_T8_R2.insert(1, 'trial', '8')
-# NM_T8_R1.insert(1, 'trial', '8')
-# NM_T8_R3.insert(1, 'trial', '8')
-# NM_T8_R1.insert(2, 'robot', '1')
-# NM_T8_R2.insert(2, 'robot', '2')
-# NM_T8_R3.insert(2, 'robot', '3')
+NM_T8_R2.insert(0, 'condition', 'NM')
+NM_T8_R1.insert(0, 'condition', 'NM')
+NM_T8_R3.insert(0, 'condition', 'NM')
+NM_T8_R2.insert(1, 'trial', '8')
+NM_T8_R1.insert(1, 'trial', '8')
+NM_T8_R3.insert(1, 'trial', '8')
+NM_T8_R1.insert(2, 'robot', '1')
+NM_T8_R2.insert(2, 'robot', '2')
+NM_T8_R3.insert(2, 'robot', '3')
 
-# NM_T9_R2.insert(0, 'condition', 'NM')
-# NM_T9_R1.insert(0, 'condition', 'NM')
-# NM_T9_R3.insert(0, 'condition', 'NM')
-# NM_T9_R2.insert(1, 'trial', '9')
-# NM_T9_R1.insert(1, 'trial', '9')
-# NM_T9_R3.insert(1, 'trial', '9')
-# NM_T9_R1.insert(2, 'robot', '1')
-# NM_T9_R2.insert(2, 'robot', '2')
-# NM_T9_R3.insert(2, 'robot', '3')
+NM_T9_R2.insert(0, 'condition', 'NM')
+NM_T9_R1.insert(0, 'condition', 'NM')
+NM_T9_R3.insert(0, 'condition', 'NM')
+NM_T9_R2.insert(1, 'trial', '9')
+NM_T9_R1.insert(1, 'trial', '9')
+NM_T9_R3.insert(1, 'trial', '9')
+NM_T9_R1.insert(2, 'robot', '1')
+NM_T9_R2.insert(2, 'robot', '2')
+NM_T9_R3.insert(2, 'robot', '3')
 
-# NM_T10_R2.insert(0, 'condition', 'NM')
-# NM_T10_R1.insert(0, 'condition', 'NM')
-# NM_T10_R3.insert(0, 'condition', 'NM')
-# NM_T10_R2.insert(1, 'trial', '10')
-# NM_T10_R1.insert(1, 'trial', '10')
-# NM_T10_R3.insert(1, 'trial', '10')
-# NM_T10_R1.insert(2, 'robot', '1')
-# NM_T10_R2.insert(2, 'robot', '2')
-# NM_T10_R3.insert(2, 'robot', '3')
+NM_T10_R2.insert(0, 'condition', 'NM')
+NM_T10_R1.insert(0, 'condition', 'NM')
+NM_T10_R3.insert(0, 'condition', 'NM')
+NM_T10_R2.insert(1, 'trial', '10')
+NM_T10_R1.insert(1, 'trial', '10')
+NM_T10_R3.insert(1, 'trial', '10')
+NM_T10_R1.insert(2, 'robot', '1')
+NM_T10_R2.insert(2, 'robot', '2')
+NM_T10_R3.insert(2, 'robot', '3')
 
 
 
@@ -445,110 +446,110 @@ print( all_df )
 
 
 
-# # Results N+
-# subset = all_df[ ( all_df['condition'] == 'NP' ) ]
-# #print( subset )
+# Results N+
+subset = all_df[ ( all_df['condition'] == 'NP' ) ]
+#print( subset )
 
 
-# # Set y-axis limits
-# y_limits = (0, 110)
+# Set y-axis limits
+y_limits = (0, 110)
 
-# # having trouble with hue colours
-# colours = dict(zip(subset['robot'].unique(), sns.color_palette(n_colors=len(subset['robot'].unique()))))
+# having trouble with hue colours
+colours = dict(zip(subset['robot'].unique(), sns.color_palette(n_colors=len(subset['robot'].unique()))))
 
-# lplot = sns.relplot(data=subset, x='time', y='activation', kind='line', hue='robot', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
-# lplot.fig.suptitle(f'Activity Level {conditions[1]} {title_extension}', fontsize=16)
+lplot = sns.relplot(data=subset, x='time', y='activation', kind='line', hue='robot', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
+lplot.fig.suptitle(f'Activity Level {conditions[1]} {title_extension}', fontsize=16)
 
-# # Set y-axis limits
-# plt.ylim(y_limits)
-# plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
+# Set y-axis limits
+plt.ylim(y_limits)
+plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
 
-# plt.xlabel('Time (s)')
-# plt.ylabel('Activity Level')
-
-
-# plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[1]}_AL.png')
-# plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[1]}_AL.pdf')
-# plt.close()
+plt.xlabel('Time (s)')
+plt.ylabel('Activity Level')
 
 
-
-# # Results N-
-# subset = all_df[ ( all_df['condition'] == 'NM' ) ]
-# #print( subset )
-
-
-# # Set y-axis limits
-# y_limits = (0, 110)
-
-# # having trouble with hue colours
-# colours = dict(zip(subset['robot'].unique(), sns.color_palette(n_colors=len(subset['robot'].unique()))))
-
-# lplot = sns.relplot(data=subset, x='time', y='activation', kind='line', hue='robot', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
-# lplot.fig.suptitle(f'Activity Level {conditions[2]} {title_extension}', fontsize=16)
-
-# # Set y-axis limits
-# plt.ylim(y_limits)
-# plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
-
-# plt.xlabel('Time (s)')
-# plt.ylabel('Activity Level')
-
-# plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[2]}_AL.png')
-# plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[2]}_AL.pdf')
-# plt.close()
-
-
-# # Result P
-
-# subset = all_df[ ( all_df['condition'] == 'P' ) ]
-# #print( subset )
-
-# # Set y-axis limits
-# y_limits = (0, 110)
-
-# # having trouble with hue colours
-# colours = dict(zip(subset['robot'].unique(), sns.color_palette(n_colors=len(subset['robot'].unique()))))
-
-# lplot = sns.relplot(data=subset, x='time', y='activation', kind='line', hue='robot', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
-# lplot.fig.suptitle(f'Neo Threshold {conditions[0]} {title_extension}', fontsize=16)
-
-# # Set y-axis limits
-# plt.ylim(y_limits)
-# plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
-
-
-# plt.xlabel('Time (s)')
-# plt.ylabel('Neophilia')
-
-# plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[0]}_AL.png')
-# plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[0]}_AL.pdf')
-# plt.close()
+plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[1]}_AL.png')
+plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[1]}_AL.pdf')
+plt.close()
 
 
 
-
-# # Results all compared 
-# subset = all_df[ ( all_df['time'] < max_time ) ]
-# #print( subset )
-
+# Results N-
+subset = all_df[ ( all_df['condition'] == 'NM' ) ]
+#print( subset )
 
 
-# # having trouble with hue colours
-# colours = dict(zip(subset['condition'].unique(), sns.color_palette(n_colors=len(subset['condition'].unique()))))
+# Set y-axis limits
+y_limits = (0, 110)
 
-# lplot = sns.relplot(data=subset, x='time', y='activation', kind='line', hue='condition', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
-# lplot.fig.suptitle(f'Neo Threshold Over Time {title_extension}', fontsize=16)
+# having trouble with hue colours
+colours = dict(zip(subset['robot'].unique(), sns.color_palette(n_colors=len(subset['robot'].unique()))))
 
-# plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
+lplot = sns.relplot(data=subset, x='time', y='activation', kind='line', hue='robot', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
+lplot.fig.suptitle(f'Activity Level {conditions[2]} {title_extension}', fontsize=16)
+
+# Set y-axis limits
+plt.ylim(y_limits)
+plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
+
+plt.xlabel('Time (s)')
+plt.ylabel('Activity Level')
+
+plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[2]}_AL.png')
+plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[2]}_AL.pdf')
+plt.close()
 
 
-# plt.xlabel('Time (s)')
-# plt.ylabel('Neophilia')
+# Result P
 
-# plt.savefig(f'{graph_path}/pngs/{experiment}_ALL_AL.png')
-# plt.savefig(f'{graph_path}/pdfs/{experiment}_ALL_AL.pdf')
-# plt.close()
+subset = all_df[ ( all_df['condition'] == 'P' ) ]
+#print( subset )
+
+# Set y-axis limits
+y_limits = (0, 110)
+
+# having trouble with hue colours
+colours = dict(zip(subset['robot'].unique(), sns.color_palette(n_colors=len(subset['robot'].unique()))))
+
+lplot = sns.relplot(data=subset, x='time', y='activation', kind='line', hue='robot', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
+lplot.fig.suptitle(f'Neo Threshold {conditions[0]} {title_extension}', fontsize=16)
+
+# Set y-axis limits
+plt.ylim(y_limits)
+plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
+
+
+plt.xlabel('Time (s)')
+plt.ylabel('Neophilia')
+
+plt.savefig(f'{graph_path}/pngs/{experiment}_{conditions[0]}_AL.png')
+plt.savefig(f'{graph_path}/pdfs/{experiment}_{conditions[0]}_AL.pdf')
+plt.close()
+
+
+
+
+# Results all compared 
+subset = all_df[ ( all_df['time'] < max_time ) ]
+#print( subset )
+
+
+
+# having trouble with hue colours
+colours = dict(zip(subset['condition'].unique(), sns.color_palette(n_colors=len(subset['condition'].unique()))))
+
+lplot = sns.relplot(data=subset, x='time', y='activation', kind='line', hue='condition', palette=colours, height=5, aspect=2, errorbar=('ci',95) )
+lplot.fig.suptitle(f'Neo Threshold Over Time {title_extension}', fontsize=16)
+
+plt.axhline(y=50, linestyle='--', linewidth=0.8, c='hotpink')
+
+
+plt.xlabel('Time (s)')
+plt.ylabel('Neophilia')
+
+plt.savefig(f'{graph_path}/pngs/{experiment}_ALL_AL.png')
+plt.savefig(f'{graph_path}/pdfs/{experiment}_ALL_AL.pdf')
+plt.close()
 
 
 
